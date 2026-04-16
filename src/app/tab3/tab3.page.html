@@ -1,17 +1,70 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Update & Delete</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="help-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <h2 class="ion-margin-top">Manage Existing Item</h2>
+  <p class="ion-text-wrap ion-margin-bottom">
+    Enter the exact Item Name to update its details or delete its record from the database.
+  </p>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="stacked" color="danger">Target Item Name *</ion-label>
+      <ion-input type="text" placeholder="Enter name to find..."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">New Category</ion-label>
+      <ion-select placeholder="Select Category">
+        <ion-select-option value="Electronics">Electronics</ion-select-option>
+        <ion-select-option value="Furniture">Furniture</ion-select-option>
+        <ion-select-option value="Clothing">Clothing</ion-select-option>
+        <ion-select-option value="Tools">Tools</ion-select-option>
+        <ion-select-option value="Miscellaneous">Miscellaneous</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">New Quantity</ion-label>
+      <ion-input type="number" placeholder="Enter new quantity"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">New Price ($)</ion-label>
+      <ion-input type="number" placeholder="Enter new price"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="stacked">New Stock Status</ion-label>
+      <ion-select placeholder="Select Status">
+        <ion-select-option value="In Stock">In Stock</ion-select-option>
+        <ion-select-option value="Low Stock">Low Stock</ion-select-option>
+        <ion-select-option value="Out of Stock">Out of Stock</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-row class="ion-margin-top">
+    <ion-col>
+      <ion-button expand="block" color="warning">
+        <ion-icon name="create" slot="start"></ion-icon>
+        Update
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" color="danger">
+        <ion-icon name="trash" slot="start"></ion-icon>
+        Delete
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
 </ion-content>
