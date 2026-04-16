@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Privacy & Security</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary">
+        <ion-icon name="lock-closed"></ion-icon> Data Security
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      All inventory data is transmitted securely to the remote database using RESTful APIs over encrypted HTTPS connections. We do not store sensitive backend credentials locally on the device.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary">
+        <ion-icon name="eye-off"></ion-icon> User Privacy
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      This application only collects and manages inventory data. It does not track user locations, access personal contacts, or collect unnecessary personal identifiable information (PII).
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary">
+        <ion-icon name="shield-checkmark"></ion-icon> Input Validation
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Strict form validation is implemented (e.g., number-only fields for quantity and price) to prevent injection attacks and ensure database integrity.
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
