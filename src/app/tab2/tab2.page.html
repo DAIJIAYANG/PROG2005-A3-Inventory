@@ -1,17 +1,85 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Add & Featured</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="help-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-list>
+    <ion-list-header>
+      <ion-label color="warning">
+        <h2>★ Featured Items</h2>
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="star" slot="start" color="warning"></ion-icon>
+      <ion-label>MacBook Pro</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <h2 class="ion-margin-top">Add New Item</h2>
+  
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="stacked">Item Name *</ion-label>
+      <ion-input type="text" placeholder="Enter exact name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Category *</ion-label>
+      <ion-select placeholder="Select Category">
+        <ion-select-option value="Electronics">Electronics</ion-select-option>
+        <ion-select-option value="Furniture">Furniture</ion-select-option>
+        <ion-select-option value="Clothing">Clothing</ion-select-option>
+        <ion-select-option value="Tools">Tools</ion-select-option>
+        <ion-select-option value="Miscellaneous">Miscellaneous</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Quantity *</ion-label>
+      <ion-input type="number" placeholder="0"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Price ($) *</ion-label>
+      <ion-input type="number" placeholder="0"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Supplier Name *</ion-label>
+      <ion-input type="text" placeholder="Enter supplier name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Stock Status *</ion-label>
+      <ion-select placeholder="Select Status">
+        <ion-select-option value="In Stock">In Stock</ion-select-option>
+        <ion-select-option value="Low Stock">Low Stock</ion-select-option>
+        <ion-select-option value="Out of Stock">Out of Stock</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Set as Featured?</ion-label>
+      <ion-toggle slot="end" color="warning"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Special Note (Optional)</ion-label>
+      <ion-textarea placeholder="Any extra notes..."></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="success" class="ion-margin-top">
+    <ion-icon name="add-circle" slot="start"></ion-icon>
+    Add Item
+  </ion-button>
+
 </ion-content>
