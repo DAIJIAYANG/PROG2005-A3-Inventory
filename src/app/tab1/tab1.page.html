@@ -1,17 +1,34 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Inventory List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="help-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <ion-searchbar placeholder="Search item by exact name..." animated="true"></ion-searchbar>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Current Database</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>
+        <h2>MacBook Pro</h2>
+        <p>Category: Electronics | Status: In Stock</p>
+        <p>Qty: 10</p>
+      </ion-label>
+      <ion-note slot="end" color="success">
+        <h2>$1999</h2>
+      </ion-note>
+    </ion-item>
+
+  </ion-list>
+
 </ion-content>
