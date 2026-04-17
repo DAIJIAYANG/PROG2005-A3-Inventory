@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Add & Featured</ion-title>
+
+    <!-- Help button (UI requirement from assignment) -->
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon slot="icon-only" name="help-circle"></ion-icon>
@@ -11,29 +13,45 @@
 
 <ion-content class="ion-padding">
 
+  <!-- FEATURED ITEMS SECTION -->
   <ion-list>
     <ion-list-header>
       <ion-label color="warning">
         <h2>★ Featured Items</h2>
       </ion-label>
     </ion-list-header>
-    <ion-item>
+
+    <!-- Loop through featured items from API -->
+    <ion-item *ngFor="let item of featuredItems">
       <ion-icon name="star" slot="start" color="warning"></ion-icon>
-      <ion-label>MacBook Pro</ion-label>
+
+      <!-- Display item name -->
+      <ion-label>{{ item.item_name }}</ion-label>
     </ion-item>
   </ion-list>
 
+  <!-- ADD ITEM FORM -->
   <h2 class="ion-margin-top">Add New Item</h2>
-  
+
   <ion-list lines="full">
+
+    <!-- Item Name input -->
     <ion-item>
       <ion-label position="stacked">Item Name *</ion-label>
-      <ion-input type="text" placeholder="Enter exact name"></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Enter exact name"
+        [(ngModel)]="item_name"> <!-- binds to TS variable -->
+      </ion-input>
     </ion-item>
 
+    <!-- Category dropdown -->
     <ion-item>
       <ion-label position="stacked">Category *</ion-label>
-      <ion-select placeholder="Select Category">
+      <ion-select
+        placeholder="Select Category"
+        [(ngModel)]="category">
+
         <ion-select-option value="Electronics">Electronics</ion-select-option>
         <ion-select-option value="Furniture">Furniture</ion-select-option>
         <ion-select-option value="Clothing">Clothing</ion-select-option>
@@ -42,42 +60,82 @@
       </ion-select>
     </ion-item>
 
+    <!-- Quantity input -->
     <ion-item>
       <ion-label position="stacked">Quantity *</ion-label>
-      <ion-input type="number" placeholder="0"></ion-input>
+      <ion-input
+        type="number"
+        placeholder="0"
+        [(ngModel)]="quantity">
+      </ion-input>
     </ion-item>
 
+    <!-- Price input -->
     <ion-item>
       <ion-label position="stacked">Price ($) *</ion-label>
-      <ion-input type="number" placeholder="0"></ion-input>
+      <ion-input
+        type="number"
+        placeholder="0"
+        [(ngModel)]="price">
+      </ion-input>
     </ion-item>
 
+    <!-- Supplier name input -->
     <ion-item>
       <ion-label position="stacked">Supplier Name *</ion-label>
-      <ion-input type="text" placeholder="Enter supplier name"></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Enter supplier name"
+        [(ngModel)]="supplier_name">
+      </ion-input>
     </ion-item>
 
+    <!-- Stock status dropdown -->
     <ion-item>
       <ion-label position="stacked">Stock Status *</ion-label>
-      <ion-select placeholder="Select Status">
+      <ion-select
+        placeholder="Select Status"
+        [(ngModel)]="stock_status">
+
         <ion-select-option value="In Stock">In Stock</ion-select-option>
         <ion-select-option value="Low Stock">Low Stock</ion-select-option>
         <ion-select-option value="Out of Stock">Out of Stock</ion-select-option>
       </ion-select>
     </ion-item>
 
+    <!-- Featured toggle -->
     <ion-item>
       <ion-label>Set as Featured?</ion-label>
-      <ion-toggle slot="end" color="warning"></ion-toggle>
+      <ion-toggle
+        slot="end"
+        color="warning"
+        [(ngModel)]="featured_item"> <!-- true/false -->
+      </ion-toggle>
     </ion-item>
 
+    <!-- Optional note -->
     <ion-item>
       <ion-label position="stacked">Special Note (Optional)</ion-label>
-      <ion-textarea placeholder="Any extra notes..."></ion-textarea>
+      <ion-textarea
+        placeholder="Any extra notes..."
+        [(ngModel)]="special_note">
+      </ion-textarea>
     </ion-item>
+
   </ion-list>
 
-  <ion-button expand="block" color="success" class="ion-margin-top">
+  <!-- MESSAGE FEEDBACK (success/error) -->
+  <ion-text color="primary" *ngIf="message">
+    <p>{{ message }}</p>
+  </ion-text>
+
+  <!-- SUBMIT BUTTON -->
+  <ion-button
+    expand="block"
+    color="success"
+    class="ion-margin-top"
+    (click)="addItem()"> <!-- calls TS function -->
+
     <ion-icon name="add-circle" slot="start"></ion-icon>
     Add Item
   </ion-button>
