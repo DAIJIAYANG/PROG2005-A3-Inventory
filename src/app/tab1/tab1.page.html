@@ -16,22 +16,23 @@
   
   <ion-searchbar placeholder="Search item by exact name..." animated="true"></ion-searchbar>
 
-  <ion-list>
-    <ion-list-header>
-      <ion-label>Current Database</ion-label>
-    </ion-list-header>
+<ion-list>
+  <ion-list-header>
+    <ion-label>Current Database</ion-label>
+  </ion-list-header>
 
-    <ion-item>
-      <ion-label>
-        <h2>MacBook Pro</h2>
-        <p>Category: Electronics | Status: In Stock</p>
-        <p>Qty: 10</p>
-      </ion-label>
-      <ion-note slot="end" color="success">
-        <h2>$1999</h2>
-      </ion-note>
-    </ion-item>
+  <ion-item *ngFor="let item of items">
+    <ion-label>
+      <h2>{{ item.item_name }}</h2>
+      <p>Category: {{ item.category }} | Status: {{ item.stock_status }}</p>
+      <p>Qty: {{ item.quantity }}</p>
+    </ion-label>
 
-  </ion-list>
+    <ion-note slot="end" color="success">
+      <h2>${{ item.price }}</h2>
+    </ion-note>
+  </ion-item>
+
+</ion-list>
 
 </ion-content>
