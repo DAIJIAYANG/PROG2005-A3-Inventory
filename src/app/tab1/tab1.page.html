@@ -14,7 +14,11 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   
-  <ion-searchbar placeholder="Search item by exact name..." animated="true"></ion-searchbar>
+  <ion-searchbar
+  placeholder="Search item by exact name..."
+  [(ngModel)]="searchName"
+  (ionChange)="searchItem()">
+</ion-searchbar>
 
 <ion-list>
   <ion-list-header>

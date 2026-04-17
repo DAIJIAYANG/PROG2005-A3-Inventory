@@ -28,9 +28,9 @@ export class DataService {
   }
 
   // GET single item
-  getItem(name: string): Observable<InventoryItem> {
-    return this.http.get<InventoryItem>(`${this.url}/${name}`);
-  }
+  getItem(name: string): Observable<InventoryItem[]> {
+  return this.http.get<InventoryItem[]>(`${this.url}/${name}`);
+}
 
   // POST add item
   addItem(item: InventoryItem) {

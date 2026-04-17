@@ -8,6 +8,7 @@ import { DataService, InventoryItem } from '../services/data.service';
   standalone: false,
 })
 export class Tab1Page implements OnInit {
+
   items: InventoryItem[] = [];
   searchName: string = '';
 
@@ -25,6 +26,23 @@ export class Tab1Page implements OnInit {
       },
       error: (err) => {
         console.log('Error fetching items', err);
+      }
+    });
+  }
+
+  searchItem() {
+    if (!this.searchName || this.searchName.trim() === '') {
+      this.loadItems(); // show all items again
+      return;
+    }
+
+    this.dataService.getItem(this.searchName).subscribe({
+      next: (data) => {
+        this.items = Array.isArray(data) ? data : [data]; // show only one result
+      },
+      error: (err) => {
+        console.log('Item not found', err);
+        this.items = []; // clear list if not found
       }
     });
   }
