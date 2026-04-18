@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Update & Delete</ion-title>
+
+    <!-- Help button required by the assignment -->
     <ion-buttons slot="end">
       <ion-button>
         <ion-icon slot="icon-only" name="help-circle"></ion-icon>
@@ -11,19 +13,30 @@
 
 <ion-content class="ion-padding">
   <h2 class="ion-margin-top">Manage Existing Item</h2>
+
+  <!-- Short instructions for the user -->
   <p class="ion-text-wrap ion-margin-bottom">
     Enter the exact Item Name to update its details or delete its record from the database.
   </p>
 
   <ion-list lines="full">
+
+    <!-- Target item name -->
     <ion-item>
       <ion-label position="stacked" color="danger">Target Item Name *</ion-label>
-      <ion-input type="text" placeholder="Enter name to find..."></ion-input>
+      <ion-input
+        type="text"
+        placeholder="Enter name to find..."
+        [(ngModel)]="targetName">
+      </ion-input>
     </ion-item>
 
+    <!-- Optional category update -->
     <ion-item>
       <ion-label position="stacked">New Category</ion-label>
-      <ion-select placeholder="Select Category">
+      <ion-select
+        placeholder="Select Category"
+        [(ngModel)]="newCategory">
         <ion-select-option value="Electronics">Electronics</ion-select-option>
         <ion-select-option value="Furniture">Furniture</ion-select-option>
         <ion-select-option value="Clothing">Clothing</ion-select-option>
@@ -32,35 +45,56 @@
       </ion-select>
     </ion-item>
 
+    <!-- Optional quantity update -->
     <ion-item>
       <ion-label position="stacked">New Quantity</ion-label>
-      <ion-input type="number" placeholder="Enter new quantity"></ion-input>
+      <ion-input
+        type="number"
+        placeholder="Enter new quantity"
+        [(ngModel)]="newQuantity">
+      </ion-input>
     </ion-item>
 
+    <!-- Optional price update -->
     <ion-item>
       <ion-label position="stacked">New Price ($)</ion-label>
-      <ion-input type="number" placeholder="Enter new price"></ion-input>
+      <ion-input
+        type="number"
+        placeholder="Enter new price"
+        [(ngModel)]="newPrice">
+      </ion-input>
     </ion-item>
-    
+
+    <!-- Optional stock status update -->
     <ion-item>
       <ion-label position="stacked">New Stock Status</ion-label>
-      <ion-select placeholder="Select Status">
+      <ion-select
+        placeholder="Select Status"
+        [(ngModel)]="newStockStatus">
         <ion-select-option value="In Stock">In Stock</ion-select-option>
         <ion-select-option value="Low Stock">Low Stock</ion-select-option>
         <ion-select-option value="Out of Stock">Out of Stock</ion-select-option>
       </ion-select>
     </ion-item>
+
   </ion-list>
 
+  <!-- Show success or error message -->
+  <ion-text color="primary" *ngIf="message">
+    <p>{{ message }}</p>
+  </ion-text>
+
+  <!-- Buttons for update and delete -->
   <ion-row class="ion-margin-top">
     <ion-col>
-      <ion-button expand="block" color="warning">
+      <ion-button expand="block" color="warning" (click)="updateItem()">
         <ion-icon name="create" slot="start"></ion-icon>
         Update
       </ion-button>
     </ion-col>
+
     <ion-col>
-      <ion-button expand="block" color="danger">
+      <ion-button expand="block" color="danger" (click)="deleteItem()">
         <ion-icon name="trash" slot="start"></ion-icon>
         Delete
       </ion-button>
