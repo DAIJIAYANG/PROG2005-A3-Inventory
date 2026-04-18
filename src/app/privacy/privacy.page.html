@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-buttons slot="start">
+      <!-- Back button to return to the main inventory tabs -->
       <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
     </ion-buttons>
     <ion-title>Privacy & Security</ion-title>
@@ -8,7 +9,23 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  
+
+  <!-- Page introduction -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary">
+        <ion-icon name="information-circle"></ion-icon> Overview
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      This mobile inventory system is designed to manage product records such as item name, category,
+      quantity, price, supplier name, stock status, featured item, and special notes. Because the app
+      connects to a remote database through RESTful APIs, privacy and security are important to protect
+      business data and keep records accurate.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Data security -->
   <ion-card>
     <ion-card-header>
       <ion-card-title color="primary">
@@ -16,10 +33,14 @@
       </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      All inventory data is transmitted securely to the remote database using RESTful APIs over encrypted HTTPS connections. We do not store sensitive backend credentials locally on the device.
+      The application sends and receives inventory records through a remote server instead of storing all
+      data permanently on the device. This reduces the risk of users directly viewing database credentials.
+      The app also uses structured API requests for adding, updating, searching, and deleting items, which
+      helps keep communication organised and consistent.
     </ion-card-content>
   </ion-card>
 
+  <!-- Privacy -->
   <ion-card>
     <ion-card-header>
       <ion-card-title color="primary">
@@ -27,10 +48,13 @@
       </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      This application only collects and manages inventory data. It does not track user locations, access personal contacts, or collect unnecessary personal identifiable information (PII).
+      This application focuses on inventory management only. It does not ask for unnecessary personal data
+      such as user location, contact lists, photos, or microphone access. The main data handled by the app
+      relates to stock records rather than sensitive personal information, which helps reduce privacy risk.
     </ion-card-content>
   </ion-card>
 
+  <!-- Validation -->
   <ion-card>
     <ion-card-header>
       <ion-card-title color="primary">
@@ -38,7 +62,39 @@
       </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      Strict form validation is implemented (e.g., number-only fields for quantity and price) to prevent injection attacks and ensure database integrity.
+      Validation is important in this inventory app because incorrect values could damage the database.
+      For example, quantity and price should be numeric, item name is required, supplier name is required,
+      and some fields use controlled options such as category and stock status. This reduces invalid input
+      and improves data integrity.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Risks and limitations -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary">
+        <ion-icon name="warning"></ion-icon> Current Risks and Limitations
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Although the app includes validation and structured API calls, there are still limitations. For example,
+      the app does not currently include user login, role-based access control, or detailed audit tracking.
+      This means that, in a real business environment, stronger controls would still be needed to prevent
+      unauthorised updates or deletions.
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Future improvements -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary">
+        <ion-icon name="construct"></ion-icon> Future Improvements
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Future improvements for this inventory app could include secure login, admin and staff permission levels,
+      stronger server-side validation, encrypted authentication tokens, and activity logs for tracking who added,
+      updated, or deleted an item. These improvements would make the system more suitable for real commercial use.
     </ion-card-content>
   </ion-card>
 

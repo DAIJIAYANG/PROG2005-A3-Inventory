@@ -1,13 +1,15 @@
+// Imports Angular core and Ionic modules needed for this standalone page
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular'; // <-- Key point: Import the Ionic UI engine
+import { IonicModule } from '@ionic/angular';
+
 @Component({
   selector: 'app-privacy',
   templateUrl: './privacy.page.html',
   styleUrls: ['./privacy.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule] // <-- Key point: Inform the page about the use of these engines
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class PrivacyPage implements OnInit {
 
