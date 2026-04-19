@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { AlertController, ViewWillEnter } from '@ionic/angular';
 import { DataService, InventoryItem } from '../services/data.service';
 
 @Component({
@@ -8,15 +8,23 @@ import { DataService, InventoryItem } from '../services/data.service';
   styleUrls: ['tab1.page.scss'],
   standalone: false,
 })
-export class Tab1Page implements OnInit {
+export class Tab1Page implements ViewWillEnter {
 
   // Stores all inventory items retrieved from the API
   items: InventoryItem[] = [];
   searchName: string = '';
 
-  constructor(private dataService: DataService, private alertCtrl: AlertController) {}
+  constructor(
+    private dataService: DataService, 
+    private alertCtrl: AlertController
+  ) {}
 
-  ngOnInit() {
+  /**
+   * Ionic lifecycle hook: Triggered every time the page is about to become active.
+   * This ensures that whenever the user navigates back from adding a new item,
+   * the list refreshes automatically without requiring a manual page reload.
+   */
+  ionViewWillEnter() {
     this.loadItems();
   }
 
@@ -35,30 +43,34 @@ export class Tab1Page implements OnInit {
 
   // Search for an item by exact name
   searchItem() {
+    // Show all items again if search input is empty
     if (!this.searchName || this.searchName.trim() === '') {
-      this.loadItems(); // show all items again
+      this.loadItems(); 
       return;
     }
 
-    this.dataService.getItem(this.searchName).subscribe({
+    this.dataService.getItem(this.searchName.trim()).subscribe({
       next: (data) => {
-        this.items = Array.isArray(data) ? data : [data]; // show only one result
+        // Ensure data is always displayed as an array 
+        // (handles both single object and array responses from API)
+        this.items = Array.isArray(data) ? data : [data];
       },
       error: (err) => {
         console.log('Item not found', err);
-        this.items = []; // clear list if not found
+        // Clear list if item is not found
+        this.items = []; 
       }
     });
   }
 
-  // Show help message to user
-async showHelp() {
-  const alert = await this.alertCtrl.create({
-    header: 'Help',
-    message: 'Use this page to view all inventory items or search by exact item name.',
-    buttons: ['OK']
-  });
+  // Show help message to the user
+  async showHelp() {
+    const alert = await this.alertCtrl.create({
+      header: 'Help',
+      message: 'Use this page to view all inventory items or search by exact item name.',
+      buttons: ['OK']
+    });
 
-  await alert.present();
-}
+    await alert.present();
+  }
 }
