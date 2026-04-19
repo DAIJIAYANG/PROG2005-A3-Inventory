@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { DataService, InventoryItem } from '../services/data.service';
 
 @Component({
@@ -9,15 +10,17 @@ import { DataService, InventoryItem } from '../services/data.service';
 })
 export class Tab1Page implements OnInit {
 
+  // Stores all inventory items retrieved from the API
   items: InventoryItem[] = [];
   searchName: string = '';
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private alertCtrl: AlertController) {}
 
   ngOnInit() {
     this.loadItems();
   }
 
+  // Fetch all items from the server and display them
   loadItems() {
     this.dataService.getAllItems().subscribe({
       next: (data) => {
@@ -30,6 +33,7 @@ export class Tab1Page implements OnInit {
     });
   }
 
+  // Search for an item by exact name
   searchItem() {
     if (!this.searchName || this.searchName.trim() === '') {
       this.loadItems(); // show all items again
@@ -46,4 +50,15 @@ export class Tab1Page implements OnInit {
       }
     });
   }
+
+  // Show help message to user
+async showHelp() {
+  const alert = await this.alertCtrl.create({
+    header: 'Help',
+    message: 'Use this page to view all inventory items or search by exact item name.',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
 }

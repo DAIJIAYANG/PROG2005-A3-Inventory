@@ -1,7 +1,13 @@
+// Allows this service to be injected into other components
 import { Injectable } from '@angular/core';
+
+// Used to send HTTP requests (GET, POST, PUT, DELETE) to the backend server
 import { HttpClient } from '@angular/common/http';
+
+// Represents asynchronous data returned from API calls
 import { Observable } from 'rxjs';
 
+// Defines the structure of an inventory item object used in the application
 export interface InventoryItem {
   item_name: string;
   category: string;
@@ -13,11 +19,13 @@ export interface InventoryItem {
   special_note?: string;
 }
 
+// Marks this class as a service available throughout the app
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
+  // Base URL of the remote REST API
   private url = 'https://prog2005.it.scu.edu.au/ArtGalley';
 
   constructor(private http: HttpClient) {}

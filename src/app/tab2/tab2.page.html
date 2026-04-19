@@ -4,7 +4,7 @@
 
     <!-- Help button (UI requirement from assignment) -->
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="showHelp()">
         <ion-icon slot="icon-only" name="help-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -109,7 +109,7 @@
       <ion-toggle
         slot="end"
         color="warning"
-        [(ngModel)]="featured_item"> <!-- true/false -->
+        [(ngModel)]="featured_item">
       </ion-toggle>
     </ion-item>
 

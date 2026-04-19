@@ -1,5 +1,6 @@
 // Import Angular core and our data service
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { DataService, InventoryItem } from '../services/data.service';
 
 @Component({
@@ -26,7 +27,7 @@ export class Tab2Page {
   // Message shown to user after adding item
   message: string = '';
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private alertCtrl: AlertController) {
     // Load featured items when page loads
     this.loadFeaturedItems();
   }
@@ -101,4 +102,15 @@ export class Tab2Page {
     this.featured_item = false;
     this.special_note = '';
   }
+
+  // Show help message to user
+async showHelp() {
+  const alert = await this.alertCtrl.create({
+    header: 'Help',
+    message: 'Use this page to add a new inventory item and mark it as featured if needed.',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
 }

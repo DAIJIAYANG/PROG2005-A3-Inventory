@@ -1,5 +1,6 @@
 // Import Angular core and our data service
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { DataService, InventoryItem } from '../services/data.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class Tab3Page {
   // Message shown to user
   message: string = '';
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private alertCtrl: AlertController) {}
 
   // Update item using PUT
   updateItem() {
@@ -111,4 +112,17 @@ export class Tab3Page {
     this.newPrice = null;
     this.newStockStatus = '';
   }
+
+  // Show help message to user
+  // Show help message to user
+async showHelp() {
+  const alert = await this.alertCtrl.create({
+    header: 'Help',
+    message: 'Use this page to update or delete an item by entering its exact name.',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
+
 }
