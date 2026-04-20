@@ -85,7 +85,7 @@ export class Tab3Page {
     return;
   }
 
-  // 🚨 SPECIAL RULE FOR LAPTOP
+  // SPECIAL CASE: Prevent deletion of "Laptop"
   if (this.targetName.trim().toLowerCase() === 'laptop') {
     this.message = 'Laptop cannot be deleted (restricted item).';
     return;
